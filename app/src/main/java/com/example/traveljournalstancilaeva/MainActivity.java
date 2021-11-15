@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.example.traveljournalstancilaeva.fragments.AboutUsFragment;
 import com.example.traveljournalstancilaeva.fragments.ContactUsFragment;
 import com.example.traveljournalstancilaeva.fragments.HomeFragment;
 import com.example.traveljournalstancilaeva.util.Trip;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         initToggle();
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(getNavigationItemSelectedListener());
-        tripList.add(new Trip("offf","mama ei"));
+        tripList.add(new Trip("offf","mama ei",1000,1.4));
     }
 
     private NavigationView.OnNavigationItemSelectedListener getNavigationItemSelectedListener() {
@@ -58,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
                     if(item.getItemId()==R.id.nav_contact_us){
                         currentFragment = new ContactUsFragment();
                     }
+                    else
+                        if(item.getItemId()==R.id.nav_about_us){
+                            currentFragment = new AboutUsFragment();
+                        }
                 openFragment();
                     drawerLayout.closeDrawer(GravityCompat.START);
                 return true;

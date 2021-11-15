@@ -1,12 +1,16 @@
 package com.example.traveljournalstancilaeva.util;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.traveljournalstancilaeva.AddTripActivity;
 import com.example.traveljournalstancilaeva.R;
 
 import java.util.ArrayList;
@@ -31,6 +35,17 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder>{
         Trip currentTrip = tripsArrayList.get(position);
         holder.getTripName().setText(currentTrip.getName());
         holder.getTripDestination().setText(currentTrip.getDestination());
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent intent = new Intent(view.getContext(), AddTripActivity.class);
+                Context context = view.getContext();
+                context.startActivity(intent);
+                Toast.makeText(view.getContext(),"of mama ei de treaba",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+
     }
 
     @Override

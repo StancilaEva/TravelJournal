@@ -3,13 +3,22 @@ package com.example.traveljournalstancilaeva.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Date;
+
 public class Trip implements Parcelable {
     private String name;
     private String destination;
+    private int price;
+    private double rate;
+    TripType tripType;
+    Date startDate;
+    Date endDate;
 
-    public Trip(String name, String destination) {
+    public Trip(String name, String destination, int price, double rate) {
         this.name = name;
         this.destination = destination;
+        this.price = price;
+        this.rate = rate;
     }
 
     public String getName() {
