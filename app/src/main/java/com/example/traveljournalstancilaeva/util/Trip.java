@@ -31,6 +31,27 @@ public class Trip implements Parcelable {
         this.endDate = endDate;
     }
 
+    public Trip(Parcel parcel) {
+        name=parcel.readString();
+        destination = parcel.readString();
+        price = parcel.readInt();
+        rate = parcel.readDouble();
+        String s = parcel.readString();
+        switch (s){
+            case "CITYBREAK":
+                tripType = TripType.CITYBREAK;
+                break;
+            case "SEASIDE":
+                tripType = TripType.SEASIDE;
+                break;
+            case "MOUNTAINS":
+                tripType = TripType.MOUNTAINS;
+                break;
+        }
+        startDate = DateConverter.fromString(parcel.readString());
+        endDate = DateConverter.fromString(parcel.readString());
+    }
+
     public String getName() {
         return name;
     }
@@ -41,6 +62,22 @@ public class Trip implements Parcelable {
 
     public String getDestination() {
         return destination;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(destination);
+        parcel.writeInt(price);
+        parcel.writeDouble(rate);
+        parcel.writeString(tripType.name());
+        parcel.writeString(DateConverter.fromDate(startDate));
+        parcel.writeString(DateConverter.fromDate(endDate));
     }
 
     public void setDestination(String destination) {
@@ -57,21 +94,7 @@ public class Trip implements Parcelable {
         public Trip[] newArray(int i) {
             return new Trip[0];
         }
-    };
+   };
 
-    public Trip(Parcel parcel) {
-        name = parcel.readString();
-        destination = parcel.readString();
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(destination);
-    }
 }
+
