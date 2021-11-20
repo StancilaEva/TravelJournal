@@ -21,6 +21,16 @@ public class Trip implements Parcelable {
         this.rate = rate;
     }
 
+    public Trip(String name, String destination, int price, double rate, TripType tripType, Date startDate, Date endDate) {
+        this.name = name;
+        this.destination = destination;
+        this.price = price;
+        this.rate = rate;
+        this.tripType = tripType;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public String getName() {
         return name;
     }

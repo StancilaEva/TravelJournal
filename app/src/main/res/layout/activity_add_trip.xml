@@ -7,7 +7,6 @@
     tools:context=".AddTripActivity">
 
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_addTripActivity_tripName"
         android:layout_width="match_parent"
@@ -107,44 +106,51 @@
 
         />
     <!--VEZI CA MAI AI DE PUS DATEPICKERURILE!!!-->
-   <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/til_addTripActivity_startDate"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@+id/s_addTripActivity_euro"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_margin="8dp"
-    >
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/tiet_addTripActivity_startDate"
+    <TextView
+        android:id="@+id/tv_add_activity_start_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/start_date"
         app:layout_constraintTop_toBottomOf="@+id/s_addTripActivity_euro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:hint="@string/start_date"
-        android:inputType="datetime"/>
-</com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_addTripActivity_endDate"
+        android:layout_margin="8dp"/>
+
+    <Button
+        android:id="@+id/b_add_activity_start_date"
+        style="?android:spinnerStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/til_addTripActivity_startDate"
+        android:onClick="onStartDateButton"
+        android:text="1/1/2021"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/tv_add_activity_start_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="8dp"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiet_addTripActivity_endDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tiet_addTripActivity_startDate"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:inputType="datetime"
-            android:hint="@string/end_date"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_margin="8dp" />
+    <TextView
+        android:id="@+id/tv_add_activity_end_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/end_date"
+        app:layout_constraintTop_toBottomOf="@+id/b_add_activity_start_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"/>
+
+    <Button
+        android:id="@+id/b_add_activity_end_date"
+        style="?android:spinnerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onEndDateButton"
+        android:text="1/1/2021"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/tv_add_activity_end_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp" />
+
     <RatingBar
         android:id="@+id/rb_add_trip_activity_rating"
         android:layout_width="wrap_content"
