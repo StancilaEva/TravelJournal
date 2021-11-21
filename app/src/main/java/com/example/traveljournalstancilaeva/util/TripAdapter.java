@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,9 +20,11 @@ import java.util.ArrayList;
 public class TripAdapter extends RecyclerView.Adapter<TripViewHolder>{
     private ArrayList<Trip> tripsArrayList;
     private OnClick onClick;
+    boolean bookmark ;
     public TripAdapter(ArrayList<Trip> tripsArrayList,OnClick onClick) {
         this.tripsArrayList = tripsArrayList;
         this.onClick = onClick;
+        bookmark = false;
     }
 
 
@@ -51,7 +54,31 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder>{
                 return true;
             }
         });
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(onClick!=null){
+                    int pos = tripsArrayList.indexOf(currentTrip);
+                    if(pos != RecyclerView.NO_POSITION){
+                        onClick.onItemClick(pos);
+                    }
+                }
+            }
+        });
+        holder.getImgButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageButton imageButton = view.findViewById(R.id.iw_trip_item_bookmark);
+                if(bookmark==false) {
+                    imageButton.setImageResource(R.drawable.ic_baseline_turned_in_24);
+                    bookmark = true;
+                }
+                else{
+                    imageButton.setImageResource(R.drawable.ic_baseline_turned_in_not_24);
+                    bookmark = false;
+                }
+            }
+        });
     }
 
     @Override

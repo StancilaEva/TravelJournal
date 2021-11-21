@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.example.traveljournalstancilaeva.AddTripActivity;
 import com.example.traveljournalstancilaeva.R;
+import com.example.traveljournalstancilaeva.ViewTripActivity;
 import com.example.traveljournalstancilaeva.util.DateConverter;
 import com.example.traveljournalstancilaeva.util.OnClick;
 import com.example.traveljournalstancilaeva.util.Trip;
@@ -35,6 +36,7 @@ public class HomeFragment extends Fragment implements OnClick {
     public static final String EDIT = "EDIT";
     public static final String SAVE = "SAVE";
     public static final String BUTTON_MESSAGE = "BUTTON_MESSAGE";
+    public static final String SINGLE_TRIP = "SINGLE_TRIP";
     ArrayList<Trip> tripList;
     FloatingActionButton fabAddTrip;
     RecyclerView recyclerView;
@@ -124,5 +126,13 @@ public class HomeFragment extends Fragment implements OnClick {
         intent.putExtra(HomeFragment.POSITION,position);
         intent.putExtra(HomeFragment.BUTTON_MESSAGE,HomeFragment.EDIT);
         startForResult.launch(intent);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(this.getContext(), ViewTripActivity.class);
+        Trip trip = tripList.get(position);
+        intent.putExtra(SINGLE_TRIP,trip);
+        startActivity(intent);
     }
 }

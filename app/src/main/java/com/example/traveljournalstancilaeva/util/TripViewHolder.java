@@ -3,6 +3,7 @@ package com.example.traveljournalstancilaeva.util;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     private final TextView tripDestination;
     private final TextView tripPrice;
     private final RatingBar ratingBar;
+    private final ImageButton imgButton;
 
     public TextView getTripPrice() {
         return tripPrice;
@@ -39,6 +41,11 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
         this.tripDestination = itemView.findViewById(R.id.tv_tripItem_destination);
         this.tripPrice = itemView.findViewById(R.id.tv_trip_item_price);
         this.ratingBar = itemView.findViewById(R.id.rb_trip_item_rating);
+        this.imgButton = itemView.findViewById(R.id.iw_trip_item_bookmark);
+    }
+
+    public ImageButton getImgButton() {
+        return imgButton;
     }
 
     public ImageView getTripImg() {

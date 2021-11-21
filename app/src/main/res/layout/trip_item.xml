@@ -56,5 +56,15 @@
         android:isIndicator="true"
         android:layout_marginBottom="16dp"
         />
-
+    <ImageButton
+        android:id="@+id/iw_trip_item_bookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/rb_trip_item_rating"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_baseline_turned_in_not_24"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/transparent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
