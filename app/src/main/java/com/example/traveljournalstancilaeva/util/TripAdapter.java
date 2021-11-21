@@ -12,14 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.traveljournalstancilaeva.AddTripActivity;
 import com.example.traveljournalstancilaeva.R;
+import com.example.traveljournalstancilaeva.fragments.HomeFragment;
 
 import java.util.ArrayList;
 
 public class TripAdapter extends RecyclerView.Adapter<TripViewHolder>{
     private ArrayList<Trip> tripsArrayList;
-
-    public TripAdapter(ArrayList<Trip> tripsArrayList) {
+    private OnClick onClick;
+    public TripAdapter(ArrayList<Trip> tripsArrayList,OnClick onClick) {
         this.tripsArrayList = tripsArrayList;
+        this.onClick = onClick;
     }
 
 
@@ -35,13 +37,17 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder>{
         Trip currentTrip = tripsArrayList.get(position);
         holder.getTripName().setText(currentTrip.getName());
         holder.getTripDestination().setText(currentTrip.getDestination());
+        holder.getRatingBar().setRating((float) currentTrip.getRate());
+        holder.getTripPrice().setText(String.valueOf(currentTrip.getPrice()*10)+" Euros");
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddTripActivity.class);
-                Context context = view.getContext();
-                context.startActivity(intent);
-                Toast.makeText(view.getContext(),"of mama ei de treaba",Toast.LENGTH_LONG).show();
+                if(onClick!=null){
+                    int pos = tripsArrayList.indexOf(currentTrip);
+                    if(pos != RecyclerView.NO_POSITION){
+                        onClick.onItemLongClick(pos);
+                    }
+                }
                 return true;
             }
         });

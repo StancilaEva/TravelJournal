@@ -27,6 +27,9 @@
     <string name="price_travel_item">Price: %1$d EURO</string>
     <string name="price">Price:</string>
     <string name="price_500_euro">Price 500 EURO</string>
+    <string name="invalid_trip_name">Invalid trip name!</string>
+    <string name="invalid_destination_name">Invalid destination name!</string>
+    <string name="price_and_euros">\" Euros\"</string>
 
 
 </resources>

@@ -9,7 +9,9 @@ import android.widget.Toast;
 import com.example.traveljournalstancilaeva.fragments.AboutUsFragment;
 import com.example.traveljournalstancilaeva.fragments.ContactUsFragment;
 import com.example.traveljournalstancilaeva.fragments.HomeFragment;
+import com.example.traveljournalstancilaeva.util.DateConverter;
 import com.example.traveljournalstancilaeva.util.Trip;
+import com.example.traveljournalstancilaeva.util.TripType;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private Fragment currentFragment;
     ArrayList<Trip> tripList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         initToggle();
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(getNavigationItemSelectedListener());
-        tripList.add(new Trip("offf","mama ei",1000,1.4));
+        tripList.add(new Trip("offf","mama ei",10,1.4, TripType.SEASIDE,
+                DateConverter.fromString("22/11/2021"),DateConverter.fromString("28/11/2021")));
     }
 
     private NavigationView.OnNavigationItemSelectedListener getNavigationItemSelectedListener() {

@@ -13,16 +13,15 @@
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/pngwing_com"
         />
-
     <TextView
         android:id="@+id/tv_tripItem_name"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/iv_tripItem_picture"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_tripItem_destination"
+        app:layout_constraintBottom_toTopOf="@+id/tv_trip_item_price"
         android:text="@string/tripname"
         />
     <TextView
@@ -34,6 +33,7 @@
         app:layout_constraintStart_toEndOf="@+id/tv_tripItem_name"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rb_trip_item_rating"
         android:text="@string/destination"
         />
     <TextView
@@ -42,7 +42,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_tripItem_picture"
-        app:layout_constraintEnd_toStartOf="@+id/rb_trip_item_rating"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tripItem_name"
+        android:layout_marginLeft="8dp"
         android:text="@string/price"/>
     <RatingBar
         android:id="@+id/rb_trip_item_rating"
@@ -53,6 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_trip_item_price"
         android:isIndicator="true"
+        android:layout_marginBottom="16dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

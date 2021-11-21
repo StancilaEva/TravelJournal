@@ -69,7 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/city_break"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:checked="true"/>
         <RadioButton
             android:id="@+id/rb_addTripActivity_seaSide"
             android:layout_width="wrap_content"
@@ -83,16 +84,19 @@
             android:text="@string/mountains"
             android:layout_weight="1"/>
     </RadioGroup>
+
     <TextView
         android:id="@+id/tv_addTripActivity_euro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/rg_addTripActivity_tripType"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/price_500_euro"
         android:layout_margin="8dp"
-        />
+        android:layout_marginTop="8dp"
+        android:text="@string/price_500_euro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_addTripActivity_tripType" />
+
     <SeekBar
         android:id="@+id/s_addTripActivity_euro"
         android:layout_width="match_parent"
@@ -159,6 +163,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:stepSize="1"
+        android:rating="3"
         />
     <Button
         android:id="@+id/b_addTripActivity_save"

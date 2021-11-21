@@ -1,8 +1,13 @@
 package com.example.traveljournalstancilaeva.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,25 +15,44 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.example.traveljournalstancilaeva.AddTripActivity;
 import com.example.traveljournalstancilaeva.R;
+import com.example.traveljournalstancilaeva.util.DateConverter;
+import com.example.traveljournalstancilaeva.util.OnClick;
 import com.example.traveljournalstancilaeva.util.Trip;
 import com.example.traveljournalstancilaeva.util.TripAdapter;
+import com.example.traveljournalstancilaeva.util.TripType;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements OnClick {
 
     public static final String TRIP_LIST = "TRIP_LIST";
+    public static final String SEND_TRIPS = "SEND TRIPS";
+    public static final String POSITION = "POSITION";
+    public static final String EDIT = "EDIT";
+    public static final String SAVE = "SAVE";
+    public static final String BUTTON_MESSAGE = "BUTTON_MESSAGE";
     ArrayList<Trip> tripList;
     FloatingActionButton fabAddTrip;
-
     RecyclerView recyclerView;
+
+    private ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if(result.getResultCode()== Activity.RESULT_OK){
+                Intent intent = result.getData();
+                ArrayList<Trip> trips = intent.getParcelableArrayListExtra(AddTripActivity.RESULT_TRIPS);
+                tripList.clear();
+                tripList.addAll(trips);
+                TripAdapter tripAdapter = (TripAdapter) recyclerView.getAdapter();
+                tripAdapter.notifyDataSetChanged();
+
+            }
+        }
+    });
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -51,7 +75,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setUpAdapter() {
-        TripAdapter tripAdapter = new TripAdapter(tripList);
+        TripAdapter tripAdapter = new TripAdapter(tripList,this);
         recyclerView.setAdapter(tripAdapter);
     }
 
@@ -65,17 +89,40 @@ public class HomeFragment extends Fragment {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
             recyclerView.setLayoutManager(linearLayoutManager);
             setUpAdapter();
-            fabAddTrip = view.findViewById(R.id.fab_home_fragment);
-            fabAddTrip.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), AddTripActivity.class);
-                    startActivity(intent);
-                }
-            });
+            initFAB(view);
+
         }
         return view;
     }
 
 
+
+    private void initFAB(View view) {
+        fabAddTrip = view.findViewById(R.id.fab_home_fragment);
+        fabAddTrip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(view.getContext(), AddTripActivity.class);
+//                startActivity(intent);
+                Intent intent = new Intent(view.getContext(),AddTripActivity.class);
+                Trip trip = new Trip("-","-",50,3.0, TripType.SEASIDE,
+                        DateConverter.fromString("1/1/2000"),DateConverter.fromString("1/1/2000"));
+                tripList.add(trip);
+                intent.putParcelableArrayListExtra(SEND_TRIPS,tripList);
+                intent.putExtra(POSITION,tripList.indexOf(trip));
+                intent.putExtra(BUTTON_MESSAGE,SAVE);
+                startForResult.launch(intent);
+            }
+        });
+    }
+
+
+    @Override
+    public void onItemLongClick(int position) {
+        Intent intent = new Intent(this.getContext(), AddTripActivity.class);
+        intent.putParcelableArrayListExtra(HomeFragment.SEND_TRIPS,tripList);
+        intent.putExtra(HomeFragment.POSITION,position);
+        intent.putExtra(HomeFragment.BUTTON_MESSAGE,HomeFragment.EDIT);
+        startForResult.launch(intent);
+    }
 }

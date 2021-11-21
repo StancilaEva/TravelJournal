@@ -24,6 +24,14 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     private final TextView tripPrice;
     private final RatingBar ratingBar;
 
+    public TextView getTripPrice() {
+        return tripPrice;
+    }
+
+    public RatingBar getRatingBar() {
+        return ratingBar;
+    }
+
     public TripViewHolder(@NonNull View itemView) {
         super(itemView);
         tripImg = itemView.findViewById(R.id.iv_tripItem_picture);
