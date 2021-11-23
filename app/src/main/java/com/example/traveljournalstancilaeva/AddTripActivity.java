@@ -7,6 +7,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.media.Rating;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -89,6 +90,17 @@ public class AddTripActivity extends AppCompatActivity {
         tripPrice.setProgress(tripYouHaveToEdit.getPrice());
     }
 
+    @Override
+    public void onBackPressed() {
+        if(saveButton.getText().toString().equals(HomeFragment.EDIT))finish();
+        else{
+            trips.remove(tripYouHaveToEdit);
+            Intent intent = new Intent();
+            intent.putParcelableArrayListExtra(RESULT_TRIPS, trips);
+            setResult(RESULT_OK, intent);
+            finish();
+        }
+    }
 
     private void initComponents() {
         tripPrice = findViewById(R.id.s_addTripActivity_euro);

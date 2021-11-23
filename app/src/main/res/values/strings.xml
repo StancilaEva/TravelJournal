@@ -32,6 +32,8 @@
     <string name="price_and_euros">\" Euros\"</string>
     <string name="the_ending_date">the ending date</string>
     <string name="the_starting_date">the starting date</string>
+    <string name="user_android_com">user@android.com</string>
+    <string name="user">User</string>
 
 
 </resources>

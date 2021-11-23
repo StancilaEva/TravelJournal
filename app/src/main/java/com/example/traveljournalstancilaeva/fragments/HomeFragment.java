@@ -40,6 +40,7 @@ public class HomeFragment extends Fragment implements OnClick {
     ArrayList<Trip> tripList;
     FloatingActionButton fabAddTrip;
     RecyclerView recyclerView;
+    int position;
 
     private ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
@@ -53,6 +54,7 @@ public class HomeFragment extends Fragment implements OnClick {
                 tripAdapter.notifyDataSetChanged();
 
             }
+
         }
     });
     public HomeFragment() {
@@ -121,6 +123,7 @@ public class HomeFragment extends Fragment implements OnClick {
 
     @Override
     public void onItemLongClick(int position) {
+        this.position = position;
         Intent intent = new Intent(this.getContext(), AddTripActivity.class);
         intent.putParcelableArrayListExtra(HomeFragment.SEND_TRIPS,tripList);
         intent.putExtra(HomeFragment.POSITION,position);
@@ -130,6 +133,7 @@ public class HomeFragment extends Fragment implements OnClick {
 
     @Override
     public void onItemClick(int position) {
+        this.position = position;
         Intent intent = new Intent(this.getContext(), ViewTripActivity.class);
         Trip trip = tripList.get(position);
         intent.putExtra(SINGLE_TRIP,trip);
