@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         initToggle();
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(getNavigationItemSelectedListener());
-        tripList.add(new Trip("offf","mama ei",10,1.4, TripType.SEASIDE,
+        tripList.add(new Trip("offf","Madrid",10,1.4, TripType.SEASIDE,
                 DateConverter.fromString("22/11/2021"),DateConverter.fromString("28/11/2021")));
     }
 
