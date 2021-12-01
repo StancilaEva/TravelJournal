@@ -106,10 +106,8 @@ public class HomeFragment extends Fragment implements OnClick {
         fabAddTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(view.getContext(), AddTripActivity.class);
-//                startActivity(intent);
                 Intent intent = new Intent(view.getContext(),AddTripActivity.class);
-                Trip trip = new Trip("-","-",50,3.0, TripType.SEASIDE,
+                Trip trip = new Trip("","",50,3.0, TripType.SEASIDE,
                         DateConverter.fromString("1/1/2000"),DateConverter.fromString("1/1/2000"));
                 tripList.add(trip);
                 intent.putParcelableArrayListExtra(SEND_TRIPS,tripList);

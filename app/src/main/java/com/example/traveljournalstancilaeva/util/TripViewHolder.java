@@ -25,6 +25,7 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     private final TextView tripPrice;
     private final RatingBar ratingBar;
     private final ImageButton imgButton;
+    private final ImageView imageView;
 
     public TextView getTripPrice() {
         return tripPrice;
@@ -42,6 +43,11 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
         this.tripPrice = itemView.findViewById(R.id.tv_trip_item_price);
         this.ratingBar = itemView.findViewById(R.id.rb_trip_item_rating);
         this.imgButton = itemView.findViewById(R.id.iw_trip_item_bookmark);
+        this.imageView = itemView.findViewById(R.id.iv_tripItem_picture);
+    }
+
+    public ImageView getImageView() {
+        return imageView;
     }
 
     public ImageButton getImgButton() {

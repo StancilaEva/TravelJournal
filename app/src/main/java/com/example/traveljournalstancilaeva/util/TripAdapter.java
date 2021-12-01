@@ -42,6 +42,21 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder>{
         holder.getTripDestination().setText(currentTrip.getDestination());
         holder.getRatingBar().setRating((float) currentTrip.getRate());
         holder.getTripPrice().setText(String.valueOf(currentTrip.getPrice()*10)+" Euros");
+        switch(currentTrip.getTripType()){
+            case SEASIDE: {
+                holder.getImageView().setImageResource(R.drawable.sunrise);
+                break;
+            }
+            case MOUNTAINS:{
+                holder.getImageView().setImageResource(R.drawable.mountains);
+                break;
+            }
+            case CITYBREAK:{
+                holder.getImageView().setImageResource(R.drawable.travel_luggage);
+                break;
+            }
+
+        }
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {

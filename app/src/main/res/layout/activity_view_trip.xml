@@ -45,6 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_view_trip_activity_price"
         android:text="@string/destination"
+        android:drawableStart="@drawable/ic_baseline_location_on_24"
         android:textSize="16sp"
         android:layout_marginLeft="16dp"
         android:layout_weight="1"/>
@@ -68,6 +69,7 @@
         android:text="@string/start_date"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
+        android:drawableStart="@drawable/ic_baseline_calendar_today_24"
         android:textSize="16sp"
         />
     <TextView
@@ -90,6 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_view_trip_activity_start_text"
         app:layout_constraintEnd_toStartOf="@+id/tv_view_trip_activity_end_date"
         android:text="@string/end_date"
+        android:drawableStart="@drawable/ic_baseline_calendar_today_24"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
         android:textSize="16sp"
@@ -130,8 +133,8 @@
         android:gravity="center"/>
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iw_view_activity_weather_img"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:src="@drawable/icons8_sun_48"
         app:layout_constraintStart_toEndOf="@+id/tv_weather_view_activity"
         app:layout_constraintEnd_toEndOf="parent"
