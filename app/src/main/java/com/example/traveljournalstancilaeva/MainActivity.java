@@ -18,6 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
@@ -28,7 +29,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.traveljournalstancilaeva.databinding.ActivityMainBinding;
+//import com.example.traveljournalstancilaeva.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +48,12 @@ public class MainActivity extends AppCompatActivity {
         initToggle();
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(getNavigationItemSelectedListener());
-        tripList.add(new Trip("offf","Madrid",10,1.4, TripType.SEASIDE,
+
+        tripList.add(new Trip("Madrid Trip","Madrid",10,1.4, TripType.CITYBREAK,
                 DateConverter.fromString("22/11/2021"),DateConverter.fromString("28/11/2021")));
+        currentFragment = HomeFragment.newInstance(tripList);
+        openFragment();
+
     }
 
     private NavigationView.OnNavigationItemSelectedListener getNavigationItemSelectedListener() {
@@ -56,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()==R.id.nav_home){
-                    currentFragment = HomeFragment.newInstance(tripList); //newInstance daca avem parametrii si o sa ai
-                    //deci sa nu uiti sa schimbi
+                    currentFragment = HomeFragment.newInstance(tripList);
                 }
                 else
                     if(item.getItemId()==R.id.nav_contact_us){

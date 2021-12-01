@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Rating;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class ViewTripActivity extends AppCompatActivity {
     private TextView textViewWeatherMin;
     private TextView textViewWeatherMax;
     private TextView textViewWeatherHumidity;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,29 @@ public class ViewTripActivity extends AppCompatActivity {
                 textViewWeatherMin.setText(String.valueOf(weatherRetrofit.getWeather().getMinTemprature()));
                 textViewWeatherMax.setText(String.valueOf(weatherRetrofit.getWeather().getMaxTemprature()));
                 textViewWeatherHumidity.setText(String.valueOf(weatherRetrofit.getWeather().getHumidity()));
+                switch(weatherRetrofit.getWeather().getType()){
+                    case "Fog":{
+                        imageView.setImageResource(R.drawable.icons8_partly_cloudy_day_48);
+                        break;
+                    }
+                    case "Clouds":{
+                        imageView.setImageResource(R.drawable.icons8_partly_cloudy_day_48);
+                        break;
+                    }
+                    case "Rain":{
+                        imageView.setImageResource(R.drawable.icons8_rain_48);
+                        break;
+                    }
+                    case "Snow":{
+                        imageView.setImageResource(R.drawable.icons8_snow_48);
+                        break;
+                    }
+                    case "Thunderstorm":{
+                        imageView.setImageResource(R.drawable.icons8_cloud_lightning_48);
+                        break;
+                    }
+                }
+
             }
 
             @Override
@@ -98,5 +123,6 @@ public class ViewTripActivity extends AppCompatActivity {
        textViewWeatherMin= findViewById(R.id.tv_weather_view_activity_change_min);
         textViewWeatherMax= findViewById(R.id.tv_weather_view_activity_change_max);
          textViewWeatherHumidity = findViewById(R.id.tv_weather_view_activity_change_humidity);
+         imageView = findViewById(R.id.iw_view_activity_weather_img);
     }
 }

@@ -5,7 +5,10 @@ import android.os.Parcelable;
 
 import java.util.Date;
 
+
 public class Trip implements Parcelable {
+
+    private int id;
     private String name;
     private String destination;
     private int price;
@@ -14,11 +17,23 @@ public class Trip implements Parcelable {
     Date startDate;
     Date endDate;
 
-    public Trip(String name, String destination, int price, double rate) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Trip(int id, String name, String destination, int price, double rate, TripType tripType, Date startDate, Date endDate) {
+        this.id = id;
         this.name = name;
         this.destination = destination;
         this.price = price;
         this.rate = rate;
+        this.tripType = tripType;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public Trip(String name, String destination, int price, double rate, TripType tripType, Date startDate, Date endDate) {
@@ -50,6 +65,7 @@ public class Trip implements Parcelable {
         }
         startDate = DateConverter.fromString(parcel.readString());
         endDate = DateConverter.fromString(parcel.readString());
+        id = parcel.readInt();
     }
 
     public String getName() {
@@ -78,6 +94,7 @@ public class Trip implements Parcelable {
         parcel.writeString(tripType.name());
         parcel.writeString(DateConverter.fromDate(startDate));
         parcel.writeString(DateConverter.fromDate(endDate));
+        parcel.writeInt(id);
     }
 
     public int getPrice() {

@@ -20,7 +20,7 @@
     <View
         android:id="@+id/v1_view_activity"
         android:layout_width="match_parent"
-        android:layout_height="8dp"
+        android:layout_height="4dp"
         android:background="@color/dark_green"
         app:layout_constraintTop_toBottomOf="@+id/tv_view_trip_activity_trip_name"
         app:layout_constraintStart_toStartOf="parent"
@@ -119,15 +119,25 @@
         />
     <TextView
         android:id="@+id/tv_weather_view_activity"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/rb_view_trip_activity_rating"
         android:text="@string/weather"
         android:textSize="16sp"
         android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iw_view_activity_weather_img"
         android:gravity="center"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iw_view_activity_weather_img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/icons8_sun_48"
+        app:layout_constraintStart_toEndOf="@+id/tv_weather_view_activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rb_view_trip_activity_rating"
+        android:layout_margin="16dp"/>
+
     <TextView
         android:id="@+id/tv_weather_view_activity_type"
         android:layout_width="wrap_content"
@@ -135,7 +145,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_weather_view_activity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_weather_view_activity_description"
-        android:text="@string/weathertype"
+        android:text="@string/no_data"
         android:textSize="16sp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"/>
@@ -146,7 +156,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_weather_view_activity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_weather_view_activity_type"
-        android:text="@string/weather_description"
+        android:text="@string/no_data"
         android:textSize="16sp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"/>
@@ -168,7 +178,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_weather_view_activity_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_weather_view_activity_min"
-        android:text="@string/min"
+        android:text="@string/no_data"
         android:textSize="16sp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"/>
@@ -190,7 +200,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_weather_view_activity_change_min"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_weather_view_activity_max"
-        android:text="@string/max"
+        android:text="@string/no_data"
         android:textSize="16sp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"/>
@@ -212,7 +222,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_weather_view_activity_change_max"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_weather_view_activity_humidity"
-        android:text="@string/humidity_change"
+        android:text="@string/no_data"
         android:textSize="16sp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"/>

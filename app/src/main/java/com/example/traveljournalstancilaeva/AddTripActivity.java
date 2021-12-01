@@ -34,8 +34,6 @@ public class AddTripActivity extends AppCompatActivity {
     SeekBar tripPrice;
     TextInputEditText tripName;
     TextInputEditText tripDestination;
- //   TextInputEditText tripStartDate;
-   // TextInputEditText tripEndDate;
     RadioGroup tripTypeGroup;
     RadioButton seaside;
     RadioButton mountains;
@@ -105,8 +103,6 @@ public class AddTripActivity extends AppCompatActivity {
     private void initComponents() {
         tripPrice = findViewById(R.id.s_addTripActivity_euro);
         tripName = findViewById(R.id.tiet_addTripActivity_tripName);
-       // tripStartDate = findViewById(R.id.tiet_addTripActivity_startDate);
-        //tripEndDate = findViewById(R.id.tiet_addTripActivity_endDate);
         ratingBar = findViewById(R.id.rb_add_trip_activity_rating);
         tripPriceTv = findViewById(R.id.tv_addTripActivity_euro);
         tripTypeGroup = findViewById(R.id.rg_addTripActivity_tripType);

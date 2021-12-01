@@ -24,9 +24,9 @@
     <string name="start_date">Start Date:</string>
     <string name="travel_jurnal_app">Travel Jurnal App</string>
     <string name="tripname">TripName</string>
-    <string name="price_travel_item">Price: %1$d EURO</string>
+    <string name="price_travel_item">Price: %1$d EUR</string>
     <string name="price">Price:</string>
-    <string name="price_500_euro">Price 500 EURO</string>
+    <string name="price_500_euro">Price 500 EUR</string>
     <string name="invalid_trip_name">Invalid trip name!</string>
     <string name="invalid_destination_name">Invalid destination name!</string>
     <string name="price_and_euros">\" Euros\"</string>
@@ -43,6 +43,7 @@
     <string name="weather">Weather</string>
     <string name="humidity">Humidity:</string>
     <string name="humidity_change">humidity</string>
+    <string name="no_data">No Data</string>
 
 
 </resources>

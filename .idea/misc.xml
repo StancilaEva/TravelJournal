@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/bg_gradient.xml" value="0.2703125" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.2703125" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/ic_baseline_message_24.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/ic_baseline_turned_in_24.xml" value="0.2703125" />
@@ -15,7 +16,10 @@
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/ic_menu_camera.xml" value="0.2703125" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2703125" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.2703125" />
+        <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/nav_drawer_selector.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/press.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/side_nav_bar.xml" value="0.2703125" />
+        <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/solid.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/drawable/splash_background.xml" value="0.2703125" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/layout/activity_add_trip.xml" value="0.2" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
@@ -27,6 +31,7 @@
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/layout/fragment_contact_us.xml" value="0.12291666666666666" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/layout/nav_header_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/layout/trip_card_view.xml" value="0.4" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/layout/trip_item.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/layout/trip_list.xml" value="0.264" />
         <entry key="..\:/Users/Eva/AndroidStudioProjects/TravelJournalStancilaEva/app/src/main/res/menu/activity_main_drawer.xml" value="0.25416666666666665" />
