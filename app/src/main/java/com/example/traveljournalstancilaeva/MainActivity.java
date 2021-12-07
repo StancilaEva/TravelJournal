@@ -1,5 +1,8 @@
 package com.example.traveljournalstancilaeva;
 
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +34,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 //import com.example.traveljournalstancilaeva.databinding.ActivityMainBinding;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,9 +52,6 @@ public class MainActivity extends AppCompatActivity {
         initToggle();
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(getNavigationItemSelectedListener());
-
-        tripList.add(new Trip("Madrid Trip","Madrid",10,1.4, TripType.CITYBREAK,
-                DateConverter.fromString("22/11/2021"),DateConverter.fromString("28/11/2021")));
         currentFragment = HomeFragment.newInstance(tripList);
         openFragment();
 
@@ -70,6 +71,16 @@ public class MainActivity extends AppCompatActivity {
                     else
                         if(item.getItemId()==R.id.nav_about_us){
                             currentFragment = new AboutUsFragment();
+                        }
+                        else if(item.getItemId()==R.id.nav_share){
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.setType("text/plain");
+                            String Body = getString(R.string.download_travel_journal_app);
+                            String Sub = "http://play.google.com";
+                            intent.putExtra(Intent.EXTRA_TEXT,Body);
+                            intent.putExtra(Intent.EXTRA_TEXT,Sub);
+                            startActivity(Intent.createChooser(intent,getString(R.string.share_travel_journal_app)));
+                            return true;
                         }
                 openFragment();
                     drawerLayout.closeDrawer(GravityCompat.START);

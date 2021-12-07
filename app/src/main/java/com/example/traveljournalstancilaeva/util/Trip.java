@@ -3,37 +3,48 @@ package com.example.traveljournalstancilaeva.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
+
+import com.example.traveljournalstancilaeva.room.DateRoomConverter;
+import com.example.traveljournalstancilaeva.room.TripTypeConverter;
+
 import java.util.Date;
 
-
+@Entity(tableName = "Trips")
 public class Trip implements Parcelable {
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "Id")
     private int id;
+    @ColumnInfo(name = "Name")
     private String name;
+    @ColumnInfo(name = "Destination")
     private String destination;
+    @ColumnInfo(name = "Price")
     private int price;
+    @ColumnInfo(name = "Rating")
     private double rate;
-    TripType tripType;
-    Date startDate;
-    Date endDate;
+    @ColumnInfo(name = "Trip_type")
+    @TypeConverters(TripTypeConverter.class)
+    private TripType tripType;
+    @ColumnInfo(name = "Start_date")
+    @TypeConverters(DateRoomConverter.class)
+    private Date startDate;
+    @ColumnInfo(name = "End_date")
+    @TypeConverters(DateRoomConverter.class)
+    private Date endDate;
+    @Ignore
+    private static int incrementId = 1;
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Trip(int id, String name, String destination, int price, double rate, TripType tripType, Date startDate, Date endDate) {
-        this.id = id;
-        this.name = name;
-        this.destination = destination;
-        this.price = price;
-        this.rate = rate;
-        this.tripType = tripType;
-        this.startDate = startDate;
-        this.endDate = endDate;
     }
 
     public Trip(String name, String destination, int price, double rate, TripType tripType, Date startDate, Date endDate) {
@@ -46,13 +57,16 @@ public class Trip implements Parcelable {
         this.endDate = endDate;
     }
 
+    public Trip() {
+    }
+
     public Trip(Parcel parcel) {
-        name=parcel.readString();
+        name = parcel.readString();
         destination = parcel.readString();
         price = parcel.readInt();
         rate = parcel.readDouble();
         String s = parcel.readString();
-        switch (s){
+        switch (s) {
             case "CITYBREAK":
                 tripType = TripType.CITYBREAK;
                 break;
@@ -141,6 +155,10 @@ public class Trip implements Parcelable {
         this.destination = destination;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public static Creator<Trip> CREATOR = new Creator<Trip>() {
         @Override
         public Trip createFromParcel(Parcel parcel) {
@@ -151,7 +169,7 @@ public class Trip implements Parcelable {
         public Trip[] newArray(int i) {
             return new Trip[0];
         }
-   };
+    };
 
 }
 

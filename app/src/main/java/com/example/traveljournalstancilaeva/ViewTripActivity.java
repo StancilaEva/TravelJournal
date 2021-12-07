@@ -96,6 +96,10 @@ public class ViewTripActivity extends AppCompatActivity {
         Bundle giftMessage = getIntent().getExtras();
         if(giftMessage!=null){
             trip = (Trip)giftMessage.getParcelable(HomeFragment.SINGLE_TRIP);
+            Integer resource = giftMessage.getInt(HomeFragment.BOOKMARK);
+            ImageView imageView = findViewById(R.id.iv_view_trip_activity_bookmark);
+            imageView.setImageResource(resource);
+
             initComponentValues();
         }
     }
@@ -103,7 +107,7 @@ public class ViewTripActivity extends AppCompatActivity {
     private void initComponentValues() {
         tvTripName.setText(trip.getName());
         tvTripDestination.setText(trip.getDestination());
-        tvTripPrice.setText(String.valueOf(trip.getPrice()*10)+" Euros");
+        tvTripPrice.setText(String.valueOf(trip.getPrice()*10)+" Euro");
         tvTripStartDate.setText(DateConverter.fromDate(trip.getStartDate()));
         tvTripEndDate.setText(DateConverter.fromDate(trip.getEndDate()));
         tvTripRating.setRating((float) trip.getRate());

@@ -27,6 +27,7 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     private final ImageButton imgButton;
     private final ImageView imageView;
 
+
     public TextView getTripPrice() {
         return tripPrice;
     }

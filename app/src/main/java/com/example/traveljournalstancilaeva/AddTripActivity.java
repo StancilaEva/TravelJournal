@@ -1,6 +1,7 @@
 package com.example.traveljournalstancilaeva;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -18,6 +19,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.traveljournalstancilaeva.fragments.HomeFragment;
+import com.example.traveljournalstancilaeva.room.TripViewModel;
 import com.example.traveljournalstancilaeva.util.DateConverter;
 import com.example.traveljournalstancilaeva.util.Trip;
 import com.example.traveljournalstancilaeva.util.TripType;
@@ -45,9 +47,9 @@ public class AddTripActivity extends AppCompatActivity {
     DatePickerDialog dateEndPickerDialog;
     Button startDateButton;
     Button endDateButton;
-    ArrayList<Trip> trips;
     Trip tripYouHaveToEdit;
     int position;
+    TripViewModel tripViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +61,7 @@ public class AddTripActivity extends AppCompatActivity {
     private void getInfo() {
         Bundle giftMessage = getIntent().getExtras();
         if(giftMessage!=null){
-            int position = giftMessage.getInt(HomeFragment.POSITION);
-            trips = giftMessage.getParcelableArrayList(HomeFragment.SEND_TRIPS);
-            tripYouHaveToEdit = trips.get(position);
+            tripYouHaveToEdit = giftMessage.getParcelable(HomeFragment.TRIP);
             saveButton.setText(giftMessage.getString(HomeFragment.BUTTON_MESSAGE));
             initComponentValues();
         }
@@ -88,17 +88,16 @@ public class AddTripActivity extends AppCompatActivity {
         tripPrice.setProgress(tripYouHaveToEdit.getPrice());
     }
 
-    @Override
-    public void onBackPressed() {
-        if(saveButton.getText().toString().equals(HomeFragment.EDIT))finish();
-        else{
-            trips.remove(tripYouHaveToEdit);
-            Intent intent = new Intent();
-            intent.putParcelableArrayListExtra(RESULT_TRIPS, trips);
-            setResult(RESULT_OK, intent);
-            finish();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if(saveButton.getText().toString().equals(HomeFragment.EDIT))finish();
+//        else{
+//
+//            Intent intent = new Intent();
+//            setResult(RESULT_OK, intent);
+//            finish();
+//        }
+//    }
 
     private void initComponents() {
         tripPrice = findViewById(R.id.s_addTripActivity_euro);
@@ -117,7 +116,7 @@ public class AddTripActivity extends AppCompatActivity {
         initEndDatePicker();
         saveButton.setOnClickListener(setOnClickListener());
         tripPrice.setOnSeekBarChangeListener(seekBarChangeListener());
-
+        tripViewModel = new ViewModelProvider(this).get(TripViewModel.class);
 
     }
 
@@ -161,8 +160,16 @@ public class AddTripActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(isValid()) {
                     initTrip();
+                    if(saveButton.getText().toString().equals(HomeFragment.SAVE)) {
+                       tripViewModel.insert(tripYouHaveToEdit);
+                    }
+                    else{
+                        tripViewModel.update(tripYouHaveToEdit);
+                    }
                     Intent intent = new Intent();
-                    intent.putParcelableArrayListExtra(RESULT_TRIPS, trips);
+//                    intent.putParcelableArrayListExtra(RESULT_TRIPS, trips);
+                   intent.putExtra("TRIP",tripYouHaveToEdit);
+                    intent.putExtra("BUTTON_MESSAGE",saveButton.getText());
                     setResult(RESULT_OK, intent);
                     finish();
                 }

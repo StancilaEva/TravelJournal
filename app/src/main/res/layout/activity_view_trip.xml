@@ -7,16 +7,24 @@
     tools:context=".ViewTripActivity">
     <TextView
         android:id="@+id/tv_view_trip_activity_trip_name"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textFontWeight="700"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_view_trip_activity_bookmark"
         android:layout_margin="16dp"
         android:text="@string/trip_name"
         android:gravity="center"/>
+    <ImageView
+        android:id="@+id/iv_view_trip_activity_bookmark"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_view_trip_activity_trip_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"/>
     <View
         android:id="@+id/v1_view_activity"
         android:layout_width="match_parent"
