@@ -9,6 +9,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface WeatherAPI {
-    @GET("/data/2.5/weather")//?q={city_name}&appid={API_key}")
+    @GET("/data/2.5/weather")
     Call<JsonObject> getWeather(@Query("q") String city_name, @Query("appid") String keyAPI);
 }
