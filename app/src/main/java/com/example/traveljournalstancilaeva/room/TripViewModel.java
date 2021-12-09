@@ -25,6 +25,8 @@ public class TripViewModel extends AndroidViewModel {
         tripRepository.update(trip);
     }
 
+    public void delete(Trip trip){ tripRepository.delete(trip);}
+
     public TripViewModel(@NonNull Application application) {
         super(application);
         tripRepository = new TripRepository(application);

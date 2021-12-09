@@ -8,9 +8,11 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,16 +59,7 @@ public class HomeFragment extends Fragment implements OnClick {
         public void onActivityResult(ActivityResult result) {
             if(result.getResultCode()== Activity.RESULT_OK){
                 Intent intent = result.getData();
-//                ArrayList<Trip> trips = intent.getParcelableArrayListExtra(AddTripActivity.RESULT_TRIPS);
- //               Trip trip = intent.getParcelableExtra("TRIP");
-//                tripList.clear();
-//                tripList.addAll(trips);
-//                if(intent.getStringExtra("BUTTON_MESSAGE")!=null) {
-//                    if (intent.getStringExtra("BUTTON_MESSAGE").equals("SAVE"))
-//                        tripViewModel.insert(trip);
-//                    else
-//                        tripViewModel.update(trip);
-//                }
+
 
                 refreshList();
                 TripAdapter tripAdapter = (TripAdapter) recyclerView.getAdapter();
@@ -117,8 +110,7 @@ public class HomeFragment extends Fragment implements OnClick {
             setUpAdapter();
             initFAB(view);
             refreshList();
-
-
+            new ItemTouchHelper(itemTouchHelperSimpleCallback).attachToRecyclerView(recyclerView);
         }
         return view;
     }
@@ -154,6 +146,19 @@ public class HomeFragment extends Fragment implements OnClick {
         });
     }
 
+    ItemTouchHelper.SimpleCallback itemTouchHelperSimpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            Trip tripYouHaveToDelete = tripList.get(viewHolder.getAdapterPosition());
+            tripViewModel.delete(tripYouHaveToDelete);
+            refreshList();
+        }
+    };
 
     @Override
     public void onItemLongClick(int position) {

@@ -82,6 +82,10 @@ public class ViewTripActivity extends AppCompatActivity {
                         imageView.setImageResource(R.drawable.icons8_cloud_lightning_48);
                         break;
                     }
+                    case "Mist":{
+                        imageView.setImageResource(R.drawable.icons8_rain_48);
+                        break;
+                    }
                 }
 
             }

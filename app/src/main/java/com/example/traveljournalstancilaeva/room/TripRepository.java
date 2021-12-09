@@ -35,4 +35,10 @@ public class TripRepository {
         });
     }
 
+    void delete(Trip trip){
+        TripRoomDatabase.databaseWriteExecutor.execute(()->{
+            tripDao.delete(trip);
+        });
+    }
+
 }
